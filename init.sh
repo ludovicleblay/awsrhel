@@ -3,6 +3,7 @@ yum -y update
 curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
 yum -y install gcc-c++ make
 yum -y install nodejs
+yum -y install git
 curl -fsSL https://get.docker.com/ | sh
 systemctl enable docker.service
 systemctl start docker
