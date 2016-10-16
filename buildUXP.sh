@@ -66,48 +66,16 @@ echo&Launch () {
 
 
 step "REMOVE EXISTING TEMP FILES"
-echo&Launch "rm -rf ${MB_NODE_TEMP_DIR}; mkdir ${MB_NODE_TEMP_DIR}"
+echo&Launch "rm -rf ${MB_NODE_TEMP_DIR}"
+echo&Launch "mkdir ${MB_NODE_TEMP_DIR}"
 
 step "CLONE DEPS"
-echo&Launch "cd $MB_NODE_TEMP_DIR; git clone $STASH_MB $GIT_ARGS"
-echo&Launch "cd $MB_NODE_TEMP_DIR; git clone $STASH_MB_DEPLOY $GIT_ARGS"
-echo&Launch "cd $MB_NODE_TEMP_DIR; git clone $STASH_MB_COMPONENTS $GIT_ARGS"
-echo&Launch "cd $MB_NODE_TEMP_DIR/$MB_COMPONENTS_REPO; git checkout $GIT_BRANCH"
-echo&Launch "cd $MB_NODE_TEMP_DIR/$MB_COMPONENTS_REPO; npm install"
-
-step "CLONE DEFAULT WORKSPACES"
-echo&Launch "cd $MB_NODE_TEMP_DIR; git clone $STASH_MODELS $GIT_ARGS;"
-echo&Launch "cd $MB_NODE_TEMP_DIR/$MB_MODELS_REPO; git checkout $GIT_BRANCH"
-
-step "INSTALL DEFAULT WORKSPACES"
-echo&Launch "mkdir $MB_NODE_TEMP_DIR/$MISYSBOARD_NODE_REPO/$MODEL_DIR; cp -r $MB_NODE_TEMP_DIR/$MB_MODELS_REPO/$DEFAULT_FOLDER_NAME $MB_NODE_TEMP_DIR/$MODEL_DIR/;"
-echo&Launch "mkdir -p $MB_NODE_TEMP_DIR/$MB_DATA_DIR; rm -rf $MB_NODE_TEMP_DIR/$MB_MODELS_REPO/$DEFAULT_FOLDER_NAME; cp -r $MB_NODE_TEMP_DIR/$MB_MODELS_REPO/* $TEMP_DIR/$MB_DATA_DIR;"
-
-step "MINIFY COMPONENTS & LIBS"
-echo&Launch "cd $MB_NODE_TEMP_DIR; /bin/cp -r $MB_DEPLOY_REPO/$PRODUCTS_PATH/$DEFAULT_CONF_NAME $MB_NODE_TEMP_DIR/$DEFAULT_CONF_NAME"
-echo&Launch "cd $MB_NODE_TEMP_DIR; /bin/cp -r $MB_DEPLOY_REPO/$SCRIPT_PATH/$ROOT_MB_PACKAGE $MB_NODE_TEMP_DIR/$ROOT_MB_PACKAGE"
-
-echo&Launch "cd $MB_NODE_TEMP_DIR/$MB_COMPONENTS_REPO; grunt half-build"
-echo&Launch "cd $MB_NODE_TEMP_DIR; /bin/cp -r $MB_COMPONENTS_REPO/$DIST_DIR/* $MISYSBOARD_NODE_REPO/$ADDONS_DIR/"
-
-step "REPLACE DATA"
-echo&Launch "${SSHREMOTE}" "cd $MB_NODE_TEMP_DIR; sed -i 's/$MB_NODE/$PRODUCT/g' $DEFAULT_CONF_NAME"
-echo&Launch "${SSHREMOTE}" "cd $MB_NODE_TEMP_DIR; sed -i 's/$MB_PORT/$PRODUCT_PORT/g' $DEFAULT_CONF_NAME"
-echo&Launch "cd $MB_NODE_TEMP_DIR; sed -i 's/$VAR_VIRTUAL_PREFIX/$VIRTUAL_PREFIX/g' $DEFAULT_CONF_NAME"
-echo&Launch "cd $MB_NODE_TEMP_DIR; cp -r $DEFAULT_CONF_NAME $MISYSBOARD_NODE_REPO/$DEFAULT_CONF_NAME"
-
-"cd $MB_NODE_TEMP_DIR; sed -i 's/%//g' $ROOT_MB_PACKAGE"
-echo&Launch "sed -i 's/$VAR_CARGO_PORT/$CARGO_PORT/g' $MB_NODE_TEMP_DIR/$ROOT_MB_PACKAGE"
-echo&Launch "sed -i 's/$VAR_CARGO_HOST/$CARGO_HOST/g' $MB_NODE_TEMP_DIR/$ROOT_MB_PACKAGE"
-echo&Launch "cd $MB_NODE_TEMP_DIR; cp -r $ROOT_MB_PACKAGE $MISYSBOARD_NODE_REPO/$DEFAULT_PACKAGE_NAME"
-
-echo&Launch "cd $MB_NODE_TEMP_DIR/$MISYSBOARD_NODE_REPO; mkdir -p $USERS_DIR"
-echo&Launch "cp -r $DEPLOY_DIR/$USERS_DIR/* $MB_NODE_TEMP_DIR/$MISYSBOARD_NODE_REPO/$USERS_DIR"
-
-step "RELAUNCH MB_NODE"
-echo&Launch "cd $DEPLOY_DIR; sh stop.sh"
-echo&Launch "rm -rf $DEPLOY_DIR"
-echo&Launch "cp -r $MB_NODE_TEMP_DIR/$MISYSBOARD_NODE_REPO $DEPLOY_DIR;"
-echo&Launch "cd $DEPLOY_DIR; sh start.sh"
+echo&Launch "cd $MB_NODE_TEMP_DIR"
+echo&Launch "git clone $STASH_MB_DEPLOY $GIT_ARGS"
+echo&Launch "git clone $STASH_PRODUCT $GIT_ARGS"
+echo&Launch "git clone $STASH_MB_COMPONENTS $GIT_ARGS"
+echo&Launch "cd $MB_COMPONENTS_REPO"
+echo&Launch "git checkout $GIT_BRANCH"
+echo&Launch "npm install"
 
 exit 0
