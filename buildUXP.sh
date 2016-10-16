@@ -36,7 +36,7 @@ DEFAULT_PACKAGE_NAME="mb-package.json"
 MB_NODE_ZIP="$MISYSBOARD_NODE_REPO.zip"
 ROOT_MB_PACKAGE="root-mb-package.json"
 
-STASH_MAFUI="ssh://git@scm-git-eur.misys.global.ad:7999/mafui"
+STASH_MAFUI="https://lleblay@scm-git-eur.misys.global.ad/scm/mafui"
 STASH_MB_COMPONENTS="$STASH_MAFUI/$MB_COMPONENTS_REPO.git"
 STASH_MB_DEPLOY="$STASH_MAFUI/$MB_DEPLOY_REPO.git"
 
