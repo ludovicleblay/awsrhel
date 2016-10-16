@@ -9,6 +9,7 @@ CARGO_HOST="10.25.31.4"
 
 MISYSBOARD_NODE_REPO="misysboard-node"
 MB_COMPONENTS_REPO="misysboard_components"
+MB_REPO="misysboard"
 MB_DEPLOY_REPO="misysboard_deployment"
 MB_MODELS_REPO="misysboard_models"
 
@@ -39,6 +40,7 @@ ROOT_MB_PACKAGE="root-mb-package.json"
 STASH_MAFUI="https://lleblay@scm-git-eur.misys.global.ad/scm/mafui"
 STASH_MB_COMPONENTS="$STASH_MAFUI/$MB_COMPONENTS_REPO.git"
 STASH_MB_DEPLOY="$STASH_MAFUI/$MB_DEPLOY_REPO.git"
+STASH_MB="$STASH_MAFUI/$MB_REPO.git"
 
 VAR_CARGO_PORT="CARGO_PORT"
 VAR_CARGO_HOST="CARGO_HOST"
@@ -67,6 +69,7 @@ step "REMOVE EXISTING TEMP FILES"
 echo&Launch "rm -rf ${MB_NODE_TEMP_DIR}; mkdir ${MB_NODE_TEMP_DIR}"
 
 step "CLONE DEPS"
+echo&Launch "cd $MB_NODE_TEMP_DIR; git clone $STASH_MB $GIT_ARGS"
 echo&Launch "cd $MB_NODE_TEMP_DIR; git clone $STASH_MB_DEPLOY $GIT_ARGS"
 echo&Launch "cd $MB_NODE_TEMP_DIR; git clone $STASH_MB_COMPONENTS $GIT_ARGS"
 echo&Launch "cd $MB_NODE_TEMP_DIR/$MB_COMPONENTS_REPO; git checkout $GIT_BRANCH"
