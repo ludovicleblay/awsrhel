@@ -1,7 +1,7 @@
 sudo su
-yum update
+yum -y update
 curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
-yum install -y gcc-c++ make
+yum -y install gcc-c++ make
 yum -y install nodejs
 curl -fsSL https://get.docker.com/ | sh
 systemctl enable docker.service
