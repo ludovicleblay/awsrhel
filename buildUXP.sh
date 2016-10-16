@@ -14,6 +14,8 @@ MB_MODELS_REPO="misysboard_models"
 
 DEPLOY_PATH="deploy"
 DEPLOY_DIR="$DEPLOY_PATH/$MISYSBOARD_NODE_REPO/$PRODUCT"
+MB_NODE_TEMP_DIR="files/temp/tempN_MB"
+
 
 SWAG_DIR="misysboard-swag"
 COMPONENTS_DIR="components"
