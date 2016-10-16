@@ -6,6 +6,9 @@ curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
 yum -y install gcc-c++ make
 yum -y install nodejs
 yum -y install git
+npm install -g grunt-cli
+npm install -g pm2
+npm config set registry http://10.21.182.123:4873/
 git config --global http.sslverify false
 curl -fsSL https://get.docker.com/ | sh
 systemctl enable docker.service
