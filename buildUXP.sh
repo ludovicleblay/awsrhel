@@ -47,6 +47,20 @@ JAVA_BS="src/resources"
 GIT_ARGS=" --depth 1"
 GIT_BRANCH="release/0.9"
 
+step() {
+    echo ""
+    echo "------------------------------------------------------------------------------"
+    echo ""
+    echo $1
+}
+
+echo&Launch () {
+    echo ""
+    printf "$ $1"
+    $1
+}
+
+
 step "REMOVE EXISTING TEMP FILES"
 echo&Launch "rm -rf ${MB_NODE_TEMP_DIR}; mkdir ${MB_NODE_TEMP_DIR}"
 
