@@ -74,6 +74,7 @@ git config --global http.sslverify false
 echo&Launch "cd $MB_NODE_TEMP_DIR"
 echo&Launch "git clone $STASH_MB $GIT_ARGS"
 echo&Launch "git clone $STASH_MB_COMPONENTS $GIT_ARGS"
+echo&Launch "git clone $STASH_MODELS $GIT_ARGS;"
 echo&Launch "cd $MB_REPO"
 echo&Launch "git checkout $GIT_BRANCH"
 echo&Launch "npm install"
@@ -83,5 +84,9 @@ echo&Launch "cd $MB_COMPONENTS_REPO"
 echo&Launch "git checkout $GIT_BRANCH"
 echo&Launch "npm install"
 echo&Launch "grunt half-build"
+echo&Launch "cd .."
+echo&Launch "cp -r $MB_COMPONENTS_REPO/$DIST_DIR/* $MB_REPO/$ADDONS_DIR/"
+echo&Launch "cd $MB_MODELS_REPO"
+echo&Launch "git checkout $GIT_BRANCH"
 
 exit 0
