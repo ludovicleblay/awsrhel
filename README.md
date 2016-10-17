@@ -5,8 +5,11 @@ Require passwordless root access.
 
 Usage : 
 sudo curl --location https://raw.githubusercontent.com/ludovicleblay/awsrhel/master/init.sh | sh
+
 sudo openconnect -b purassl.misys.com/misysvpn
+
 sudo curl --location https://raw.githubusercontent.com/ludovicleblay/awsrhel/master/buildUXP.sh | sh
+
 sudo curl --location https://raw.githubusercontent.com/ludovicleblay/awsrhel/master/startUXP.sh | sh
 
 
