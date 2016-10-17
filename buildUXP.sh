@@ -15,7 +15,7 @@ MB_MODELS_REPO="misysboard_models"
 
 DEPLOY_PATH="deploy"
 DEPLOY_DIR="$DEPLOY_PATH/$MISYSBOARD_NODE_REPO/$PRODUCT"
-MB_NODE_TEMP_DIR="files/temp/tempN_MB"
+MB_NODE_TEMP_DIR="build/"
 
 
 SWAG_DIR="misysboard-swag"
@@ -71,11 +71,17 @@ echo&Launch "mkdir ${MB_NODE_TEMP_DIR}"
 
 step "CLONE DEPS"
 echo&Launch "cd $MB_NODE_TEMP_DIR"
+echo&Launch "git clone $STASH_MB $GIT_ARGS"
 echo&Launch "git clone $STASH_MB_DEPLOY $GIT_ARGS"
 echo&Launch "git clone $STASH_PRODUCT $GIT_ARGS"
 echo&Launch "git clone $STASH_MB_COMPONENTS $GIT_ARGS"
-echo&Launch "cd $MB_COMPONENTS_REPO"
+echo&Launch "cd $MB_REPO"
 echo&Launch "git checkout $GIT_BRANCH"
 echo&Launch "npm install"
+echo&Launch "npm build"
+echo&Launch "cd .."
+echo&Launch "cd $MB_COMPONENTS_REPO"
+echo&Launch "git checkout $GIT_BRANCH"
+echo&Launch "npm half-build"
 
 exit 0
