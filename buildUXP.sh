@@ -49,7 +49,7 @@ VAR_VIRTUAL_PREFIX="VIRTUAL_PREFIX"
 JAVA_BS="src/resources"
 
 GIT_ARGS=" --depth 1"
-GIT_BRANCH="release/0.9"
+GIT_BRANCH="1.0.0-M6"
 
 step() {
     echo ""
@@ -73,8 +73,6 @@ step "CLONE DEPS"
 git config --global http.sslverify false
 echo&Launch "cd $MB_NODE_TEMP_DIR"
 echo&Launch "git clone $STASH_MB $GIT_ARGS"
-echo&Launch "git clone $STASH_MB_DEPLOY $GIT_ARGS"
-echo&Launch "git clone $STASH_PRODUCT $GIT_ARGS"
 echo&Launch "git clone $STASH_MB_COMPONENTS $GIT_ARGS"
 echo&Launch "cd $MB_REPO"
 echo&Launch "git checkout $GIT_BRANCH"
