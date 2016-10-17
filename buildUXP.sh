@@ -9,7 +9,7 @@ CARGO_HOST="10.25.31.4"
 
 MISYSBOARD_NODE_REPO="misysboard-node"
 MB_COMPONENTS_REPO="misysboard_components"
-MB_REPO="misysboard"
+MB_REPO="misysboard_node"
 MB_DEPLOY_REPO="misysboard_deployment"
 MB_MODELS_REPO="misysboard_models"
 
