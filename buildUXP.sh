@@ -78,7 +78,7 @@ echo&Launch "unzip -qq misysboard-node-1.0.0-M6.zip -d $MISYSBOARD_NODE_REPO"
 step "CLONE DEPS"
 git config --global http.sslverify false
 echo&Launch "git clone $STASH_MB_COMPONENTS $GIT_ARGS"
-echo&Launch "git clone $STASH_MODELS $GIT_ARGS;"
+echo&Launch "git clone $STASH_MB_MODELS $GIT_ARGS;"
 echo&Launch "cd $MB_COMPONENTS_REPO"
 echo&Launch "git checkout $GIT_BRANCH"
 echo&Launch "npm install"
