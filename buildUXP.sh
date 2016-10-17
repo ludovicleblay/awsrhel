@@ -109,7 +109,7 @@ echo&Launch "cd $DEPLOY_DIR"
 echo&Launch "sh stop.sh"
 echo&Launch "cd .."
 echo&Launch "rm -rf $DEPLOY_DIR"
-echo&Launch "cp -r $MB_NODE_TEMP_DIR/$MISYSBOARD_NODE_REPO $DEPLOY_DIR;"
+echo&Launch "cp -r $MB_NODE_TEMP_DIR/$MISYSBOARD_NODE_REPO $DEPLOY_DIR"
 echo&Launch "cd $DEPLOY_DIR"
 echo&Launch "sh start.sh"
 
