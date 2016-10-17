@@ -70,12 +70,12 @@ echo&Launch "rm -rf ${MB_NODE_TEMP_DIR}"
 echo&Launch "mkdir ${MB_NODE_TEMP_DIR}"
 
 step "TRANSFER MISYSBOARD NODE"
+echo&Launch "cd $MB_NODE_TEMP_DIR"
 echo&Launch "wget http://bm-artifacts.misys.global.ad/maven/content/groups/public/com/trmsys/misysboard/misysboard-node/1.0.0-M6/misysboard-node-1.0.0-M6.zip -O misysboard-node-1.0.0-M6.zip"
 echo&Launch "unzip -qq misysboard-node-1.0.0-M6.zip -d $MISYSBOARD_NODE_REPO"
 
 step "CLONE DEPS"
 git config --global http.sslverify false
-echo&Launch "cd $MB_NODE_TEMP_DIR"
 echo&Launch "git clone $STASH_MB_COMPONENTS $GIT_ARGS"
 echo&Launch "git clone $STASH_MODELS $GIT_ARGS;"
 echo&Launch "cd $MB_COMPONENTS_REPO"
