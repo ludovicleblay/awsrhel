@@ -86,5 +86,21 @@ echo&Launch "cd .."
 echo&Launch "cp -r $MB_COMPONENTS_REPO/$DIST_DIR/* $MISYSBOARD_NODE_REPO/$ADDONS_DIR/"
 echo&Launch "cd $MB_MODELS_REPO"
 echo&Launch "git checkout $GIT_BRANCH"
+echo&Launch "cd .."
+
+step "REPLACE DATA"
+echo&Launch "sed -i 's/$MB_NODE/$PRODUCT/g' $DEFAULT_CONF_NAME"
+echo&Launch "sed -i 's/$MB_PORT/$PRODUCT_PORT/g' $DEFAULT_CONF_NAME"
+echo&Launch "sed -i 's/$VAR_VIRTUAL_PREFIX/$VIRTUAL_PREFIX/g' $DEFAULT_CONF_NAME"
+echo&Launch "cp -r $DEFAULT_CONF_NAME $MISYSBOARD_NODE_REPO/$DEFAULT_CONF_NAME"
+
+echo&Launch "sed -i 's/%//g' $ROOT_MB_PACKAGE"
+echo&Launch "sed -i 's/$VAR_CARGO_PORT/$CARGO_PORT/g' $MB_NODE_TEMP_DIR/$ROOT_MB_PACKAGE"
+echo&Launch "sed -i 's/$VAR_CARGO_HOST/$CARGO_HOST/g' $MB_NODE_TEMP_DIR/$ROOT_MB_PACKAGE"
+echo&Launch "cp -r $ROOT_MB_PACKAGE $MISYSBOARD_NODE_REPO/$DEFAULT_PACKAGE_NAME"
+
+echo&Launch "cd $MB_NODE_TEMP_DIR/$MISYSBOARD_NODE_REPO"
+echo&Launch "mkdir -p $USERS_DIR"
+echo&Launch "cp -r $DEPLOY_DIR/$USERS_DIR/* $MB_NODE_TEMP_DIR/$MISYSBOARD_NODE_REPO/$USERS_DIR"
 
 exit 0
