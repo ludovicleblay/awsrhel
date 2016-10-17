@@ -20,5 +20,6 @@ systemctl start docker
 systemctl enable docker
 rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm
 yum -y install openconnect vpnc
+wget https://raw.githubusercontent.com/ludovicleblay/awsrhel/master/settings.xml -O .m2/settings.xml
 exit
 
