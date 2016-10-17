@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+<!--  <mirrors>
+    <mirror>
+      <id>xdcrep</id>
+      <name></name>
+      <url>https://hu1pslnexus01.misys.global.ad/nexus/content/groups/xdc_group</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+    <mirror>
+      <id>central</id>
+      <name>central</name>
+      <url>https://hu1pslnexus01.misys.global.ad/nexus/content/groups/xdc_group</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors> -->
+	<servers>
+		<server>
+			<id>central</id>
+			<username>lleblay</username>
+			<password></password>
+		</server>
+		<server>
+			<id>docker-hub</id>
+			<username>lleblay</username>
+			<password></password>
+			<configuration>
+				<email>"none"</email>
+			</configuration>
+		</server>
+		<server>
+			<id>xdcrep</id>
+			<username>lleblay</username>
+			<password></password>
+		</server>
+		<server>
+			<id>releases</id>
+			<username>lleblay</username>
+			<password></password>
+		</server>
+		<server>
+			<id>snapshots</id>
+			<username>lleblay</username>
+			<password></password>
+		</server>
+		<server>
+			<id>oracle</id>
+			<username>oracle</username>
+			<password>oracle</password>
+		</server>
+		<server>
+            <id>homemade-release</id>
+            <username>lleblay</username>
+            <password></password>
+        </server>
+        <server>
+            <id>homemade-snapshot</id>
+            <username>lleblay</username>
+            <password></password>
+        </server>
+	</servers>
+
+	<profiles>
+		<profile>
+			<id>default</id>
+			<repositories>
+				<repository>
+					<id>xdcrep</id>
+					<name>Extended Digital Channels Maven Repository</name>
+					<url>https://hu1pslnexus01.misys.global.ad/nexus/content/groups/xdc_group</url>
+					<snapshots>
+						<enabled>true</enabled>
+                    </snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>xdcrep</id>
+					<name>Extended Digital Channels Maven Repository</name>
+					<url>https://hu1pslnexus01.misys.global.ad/nexus/content/groups/xdc_group</url>
+					<snapshots>
+						<enabled>true</enabled>
+          </snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+			<properties>
+				<maven.test.skip>false</maven.test.skip>
+
+				<nexus.server>https://hu1pslnexus01.misys.global.ad</nexus.server>
+
+				<hudson.url></hudson.url>
+				<hudson.user></hudson.user>
+				<hudson.pass></hudson.pass>
+
+				<site.url>/tmp/mavensite</site.url>
+
+				<!-- OrientDB configuration START -->
+				<orientdb.url>remote:localhost/test</orientdb.url>
+				<orientdb.username>root</orientdb.username>
+				<orientdb.password>root</orientdb.password>
+				<!-- Server administration, for dropping a database -->
+				<orientdb.serveradmin.username>root</orientdb.serveradmin.username>
+				<orientdb.serveradmin.password>root</orientdb.serveradmin.password>
+				<!-- OrientDB configuration END -->
+
+				<!-- Oracle configuration START -->
+				<oracle.url>jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=hu1pslrac03.misys.global.ad)(PORT=1522))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=dev11.ind)))</oracle.url>
+				<oracle.username>cbdc</oracle.username>
+				<oracle.password>Gn7wk2ba</oracle.password>
+				<!-- Oracle configuration END -->
+
+				<docker.remoteregistry.url>docker.stellar.misys.global.ad:5000</docker.remoteregistry.url>
+
+				<sonar.jdbc.url>jdbc:postgresql://sonar.stellar.misys.global.ad/postgres</sonar.jdbc.url>
+				<sonar.jdbc.driverClassName>org.postgresql.Driver</sonar.jdbc.driverClassName>
+				<sonar.jdbc.username>stellar</sonar.jdbc.username>
+				<sonar.jdbc.password>password</sonar.jdbc.password>
+				<sonar.host.url>https://sonar.stellar.misys.global.ad</sonar.host.url>
+				<sonar.login>lleblay</sonar.login>
+				<sonar.password></sonar.password>
+
+				<sonar.jacoco.reportPath>${project.build.directory}/jacoco.exec</sonar.jacoco.reportPath>
+				<sonar.jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</sonar.jacoco.itReportPath>
+				<sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
+				<sonar.junit.itReportsPath>${project.build.directory}/failsafe-reports</sonar.junit.itReportsPath>
+
+			</properties>
+		</profile>
+
+        <profile>
+            <id>nexus</id>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>public</id>
+                    <name>Public Repositories</name>
+                    <url>http://bm-artifacts.misys.global.ad/maven/content/groups/public</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+            <repositories>
+                <repository>
+                    <id>public</id>
+                    <name>Public Repositories</name>
+                    <url>http://bm-artifacts.misys.global.ad/maven/content/groups/public</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>interval:60</updatePolicy>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </snapshots>
+                </repository>
+
+                <repository>
+                    <id>homemade-release</id>
+                    <name>Only for publishing homemade releases</name>
+                    <url>http://bm-artifacts.misys.global.ad/maven/content/repositories/homemade-release</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                </repository>
+                <repository>
+                    <id>homemade-snapshot</id>
+                    <name>Only for publishing homemade snapshots</name>
+                    <url>http://bm-artifacts.misys.global.ad/maven/content/repositories/homemade-snapshot</url>
+                    <layout>default</layout>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+
+	</profiles>
+	<activeProfiles>
+		 <!--<activeProfile>default</activeProfile>-->
+		<activeProfile>nexus</activeProfile>
+	</activeProfiles>
+</settings>
